@@ -1,0 +1,11 @@
+create sequence seq start with 1 minvalue 1 maxvalue 99999 increment by 1 noorder nocycle nocache;
+
+create or replace procedure proc1 (r out student.roll%type, n in student.name%type, m in student.marks%type)
+is
+i number;
+begin
+select seq.nextval into i from dual;
+r:=concat('R',i);
+insert into student values (r,n,m);
+end;
+/
